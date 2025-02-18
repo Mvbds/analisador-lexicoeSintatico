@@ -1,0 +1,373 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ELSE
+    FLOAT
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement
+Rule 2     program -> statement program
+Rule 3     statement -> declaracao
+Rule 4     statement -> expressao
+Rule 5     statement -> condicional
+Rule 6     declaracao -> INT ID EQUALS NUMBER SEMICOLON
+Rule 7     expressao -> ID EQUALS ID PLUS NUMBER SEMICOLON
+Rule 8     expressao -> ID EQUALS ID MINUS NUMBER SEMICOLON
+Rule 9     expressao -> ID EQUALS ID TIMES NUMBER SEMICOLON
+Rule 10    expressao -> ID EQUALS ID DIVIDE NUMBER SEMICOLON
+Rule 11    condicional -> IF LPAREN ID GT NUMBER RPAREN LBRACE RBRACE
+
+Terminals, with rules where they appear
+
+DIVIDE               : 10
+ELSE                 : 
+EQUALS               : 6 7 8 9 10
+FLOAT                : 
+GT                   : 11
+ID                   : 6 7 7 8 8 9 9 10 10 11
+IF                   : 11
+INT                  : 6
+LBRACE               : 11
+LPAREN               : 11
+MINUS                : 8
+NUMBER               : 6 7 8 9 10 11
+PLUS                 : 7
+RBRACE               : 11
+RPAREN               : 11
+SEMICOLON            : 6 7 8 9 10
+TIMES                : 9
+error                : 
+
+Nonterminals, with rules where they appear
+
+condicional          : 5
+declaracao           : 3
+expressao            : 4
+program              : 2 0
+statement            : 1 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement
+    (2) program -> . statement program
+    (3) statement -> . declaracao
+    (4) statement -> . expressao
+    (5) statement -> . condicional
+    (6) declaracao -> . INT ID EQUALS NUMBER SEMICOLON
+    (7) expressao -> . ID EQUALS ID PLUS NUMBER SEMICOLON
+    (8) expressao -> . ID EQUALS ID MINUS NUMBER SEMICOLON
+    (9) expressao -> . ID EQUALS ID TIMES NUMBER SEMICOLON
+    (10) expressao -> . ID EQUALS ID DIVIDE NUMBER SEMICOLON
+    (11) condicional -> . IF LPAREN ID GT NUMBER RPAREN LBRACE RBRACE
+
+    INT             shift and go to state 6
+    ID              shift and go to state 7
+    IF              shift and go to state 8
+
+    program                        shift and go to state 1
+    statement                      shift and go to state 2
+    declaracao                     shift and go to state 3
+    expressao                      shift and go to state 4
+    condicional                    shift and go to state 5
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement .
+    (2) program -> statement . program
+    (1) program -> . statement
+    (2) program -> . statement program
+    (3) statement -> . declaracao
+    (4) statement -> . expressao
+    (5) statement -> . condicional
+    (6) declaracao -> . INT ID EQUALS NUMBER SEMICOLON
+    (7) expressao -> . ID EQUALS ID PLUS NUMBER SEMICOLON
+    (8) expressao -> . ID EQUALS ID MINUS NUMBER SEMICOLON
+    (9) expressao -> . ID EQUALS ID TIMES NUMBER SEMICOLON
+    (10) expressao -> . ID EQUALS ID DIVIDE NUMBER SEMICOLON
+    (11) condicional -> . IF LPAREN ID GT NUMBER RPAREN LBRACE RBRACE
+
+    $end            reduce using rule 1 (program -> statement .)
+    INT             shift and go to state 6
+    ID              shift and go to state 7
+    IF              shift and go to state 8
+
+    statement                      shift and go to state 2
+    program                        shift and go to state 9
+    declaracao                     shift and go to state 3
+    expressao                      shift and go to state 4
+    condicional                    shift and go to state 5
+
+state 3
+
+    (3) statement -> declaracao .
+
+    INT             reduce using rule 3 (statement -> declaracao .)
+    ID              reduce using rule 3 (statement -> declaracao .)
+    IF              reduce using rule 3 (statement -> declaracao .)
+    $end            reduce using rule 3 (statement -> declaracao .)
+
+
+state 4
+
+    (4) statement -> expressao .
+
+    INT             reduce using rule 4 (statement -> expressao .)
+    ID              reduce using rule 4 (statement -> expressao .)
+    IF              reduce using rule 4 (statement -> expressao .)
+    $end            reduce using rule 4 (statement -> expressao .)
+
+
+state 5
+
+    (5) statement -> condicional .
+
+    INT             reduce using rule 5 (statement -> condicional .)
+    ID              reduce using rule 5 (statement -> condicional .)
+    IF              reduce using rule 5 (statement -> condicional .)
+    $end            reduce using rule 5 (statement -> condicional .)
+
+
+state 6
+
+    (6) declaracao -> INT . ID EQUALS NUMBER SEMICOLON
+
+    ID              shift and go to state 10
+
+
+state 7
+
+    (7) expressao -> ID . EQUALS ID PLUS NUMBER SEMICOLON
+    (8) expressao -> ID . EQUALS ID MINUS NUMBER SEMICOLON
+    (9) expressao -> ID . EQUALS ID TIMES NUMBER SEMICOLON
+    (10) expressao -> ID . EQUALS ID DIVIDE NUMBER SEMICOLON
+
+    EQUALS          shift and go to state 11
+
+
+state 8
+
+    (11) condicional -> IF . LPAREN ID GT NUMBER RPAREN LBRACE RBRACE
+
+    LPAREN          shift and go to state 12
+
+
+state 9
+
+    (2) program -> statement program .
+
+    $end            reduce using rule 2 (program -> statement program .)
+
+
+state 10
+
+    (6) declaracao -> INT ID . EQUALS NUMBER SEMICOLON
+
+    EQUALS          shift and go to state 13
+
+
+state 11
+
+    (7) expressao -> ID EQUALS . ID PLUS NUMBER SEMICOLON
+    (8) expressao -> ID EQUALS . ID MINUS NUMBER SEMICOLON
+    (9) expressao -> ID EQUALS . ID TIMES NUMBER SEMICOLON
+    (10) expressao -> ID EQUALS . ID DIVIDE NUMBER SEMICOLON
+
+    ID              shift and go to state 14
+
+
+state 12
+
+    (11) condicional -> IF LPAREN . ID GT NUMBER RPAREN LBRACE RBRACE
+
+    ID              shift and go to state 15
+
+
+state 13
+
+    (6) declaracao -> INT ID EQUALS . NUMBER SEMICOLON
+
+    NUMBER          shift and go to state 16
+
+
+state 14
+
+    (7) expressao -> ID EQUALS ID . PLUS NUMBER SEMICOLON
+    (8) expressao -> ID EQUALS ID . MINUS NUMBER SEMICOLON
+    (9) expressao -> ID EQUALS ID . TIMES NUMBER SEMICOLON
+    (10) expressao -> ID EQUALS ID . DIVIDE NUMBER SEMICOLON
+
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+
+
+state 15
+
+    (11) condicional -> IF LPAREN ID . GT NUMBER RPAREN LBRACE RBRACE
+
+    GT              shift and go to state 21
+
+
+state 16
+
+    (6) declaracao -> INT ID EQUALS NUMBER . SEMICOLON
+
+    SEMICOLON       shift and go to state 22
+
+
+state 17
+
+    (7) expressao -> ID EQUALS ID PLUS . NUMBER SEMICOLON
+
+    NUMBER          shift and go to state 23
+
+
+state 18
+
+    (8) expressao -> ID EQUALS ID MINUS . NUMBER SEMICOLON
+
+    NUMBER          shift and go to state 24
+
+
+state 19
+
+    (9) expressao -> ID EQUALS ID TIMES . NUMBER SEMICOLON
+
+    NUMBER          shift and go to state 25
+
+
+state 20
+
+    (10) expressao -> ID EQUALS ID DIVIDE . NUMBER SEMICOLON
+
+    NUMBER          shift and go to state 26
+
+
+state 21
+
+    (11) condicional -> IF LPAREN ID GT . NUMBER RPAREN LBRACE RBRACE
+
+    NUMBER          shift and go to state 27
+
+
+state 22
+
+    (6) declaracao -> INT ID EQUALS NUMBER SEMICOLON .
+
+    INT             reduce using rule 6 (declaracao -> INT ID EQUALS NUMBER SEMICOLON .)
+    ID              reduce using rule 6 (declaracao -> INT ID EQUALS NUMBER SEMICOLON .)
+    IF              reduce using rule 6 (declaracao -> INT ID EQUALS NUMBER SEMICOLON .)
+    $end            reduce using rule 6 (declaracao -> INT ID EQUALS NUMBER SEMICOLON .)
+
+
+state 23
+
+    (7) expressao -> ID EQUALS ID PLUS NUMBER . SEMICOLON
+
+    SEMICOLON       shift and go to state 28
+
+
+state 24
+
+    (8) expressao -> ID EQUALS ID MINUS NUMBER . SEMICOLON
+
+    SEMICOLON       shift and go to state 29
+
+
+state 25
+
+    (9) expressao -> ID EQUALS ID TIMES NUMBER . SEMICOLON
+
+    SEMICOLON       shift and go to state 30
+
+
+state 26
+
+    (10) expressao -> ID EQUALS ID DIVIDE NUMBER . SEMICOLON
+
+    SEMICOLON       shift and go to state 31
+
+
+state 27
+
+    (11) condicional -> IF LPAREN ID GT NUMBER . RPAREN LBRACE RBRACE
+
+    RPAREN          shift and go to state 32
+
+
+state 28
+
+    (7) expressao -> ID EQUALS ID PLUS NUMBER SEMICOLON .
+
+    INT             reduce using rule 7 (expressao -> ID EQUALS ID PLUS NUMBER SEMICOLON .)
+    ID              reduce using rule 7 (expressao -> ID EQUALS ID PLUS NUMBER SEMICOLON .)
+    IF              reduce using rule 7 (expressao -> ID EQUALS ID PLUS NUMBER SEMICOLON .)
+    $end            reduce using rule 7 (expressao -> ID EQUALS ID PLUS NUMBER SEMICOLON .)
+
+
+state 29
+
+    (8) expressao -> ID EQUALS ID MINUS NUMBER SEMICOLON .
+
+    INT             reduce using rule 8 (expressao -> ID EQUALS ID MINUS NUMBER SEMICOLON .)
+    ID              reduce using rule 8 (expressao -> ID EQUALS ID MINUS NUMBER SEMICOLON .)
+    IF              reduce using rule 8 (expressao -> ID EQUALS ID MINUS NUMBER SEMICOLON .)
+    $end            reduce using rule 8 (expressao -> ID EQUALS ID MINUS NUMBER SEMICOLON .)
+
+
+state 30
+
+    (9) expressao -> ID EQUALS ID TIMES NUMBER SEMICOLON .
+
+    INT             reduce using rule 9 (expressao -> ID EQUALS ID TIMES NUMBER SEMICOLON .)
+    ID              reduce using rule 9 (expressao -> ID EQUALS ID TIMES NUMBER SEMICOLON .)
+    IF              reduce using rule 9 (expressao -> ID EQUALS ID TIMES NUMBER SEMICOLON .)
+    $end            reduce using rule 9 (expressao -> ID EQUALS ID TIMES NUMBER SEMICOLON .)
+
+
+state 31
+
+    (10) expressao -> ID EQUALS ID DIVIDE NUMBER SEMICOLON .
+
+    INT             reduce using rule 10 (expressao -> ID EQUALS ID DIVIDE NUMBER SEMICOLON .)
+    ID              reduce using rule 10 (expressao -> ID EQUALS ID DIVIDE NUMBER SEMICOLON .)
+    IF              reduce using rule 10 (expressao -> ID EQUALS ID DIVIDE NUMBER SEMICOLON .)
+    $end            reduce using rule 10 (expressao -> ID EQUALS ID DIVIDE NUMBER SEMICOLON .)
+
+
+state 32
+
+    (11) condicional -> IF LPAREN ID GT NUMBER RPAREN . LBRACE RBRACE
+
+    LBRACE          shift and go to state 33
+
+
+state 33
+
+    (11) condicional -> IF LPAREN ID GT NUMBER RPAREN LBRACE . RBRACE
+
+    RBRACE          shift and go to state 34
+
+
+state 34
+
+    (11) condicional -> IF LPAREN ID GT NUMBER RPAREN LBRACE RBRACE .
+
+    INT             reduce using rule 11 (condicional -> IF LPAREN ID GT NUMBER RPAREN LBRACE RBRACE .)
+    ID              reduce using rule 11 (condicional -> IF LPAREN ID GT NUMBER RPAREN LBRACE RBRACE .)
+    IF              reduce using rule 11 (condicional -> IF LPAREN ID GT NUMBER RPAREN LBRACE RBRACE .)
+    $end            reduce using rule 11 (condicional -> IF LPAREN ID GT NUMBER RPAREN LBRACE RBRACE .)
+
